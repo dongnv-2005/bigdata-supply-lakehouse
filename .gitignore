@@ -33,3 +33,10 @@ Thumbs.db
 .vscode/
 *.swp
 *~
+
+# Local Draft Reports & Notes
+BAO_CAO_TONG_KET_VA_HUONG_DAN_DOCX_SLIDE.txt
+*.docx
+*.pptx
+*.pdf
+
