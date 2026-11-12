@@ -1,0 +1,18 @@
+
+========================================================================================
+                      BÁO CÁO BENCHMARK HIỆU NĂNG TRUY VẤN
+========================================================================================
+Truy vấn kiểm thử: Đếm tổng số đơn hàng giao tại Thượng Hải (Shanghai)
+- Số lượng bản ghi kết quả: 1,483,864 dòng
+
+1. Quét trên Bronze Layer (Full Table Scan CSV thô):
+   - Cơ chế: Spark phải duyệt qua toàn bộ 10.6M bản ghi trên tất cả các file CSV.
+   - Thời gian thực thi: 1.806 giây
+
+2. Quét trên Silver Layer (Partition Pruning Parquet):
+   - Cơ chế: Spark chỉ nhảy vào đúng thư mục city=Shanghai, bỏ qua 4 thành phố còn lại.
+   - Thời gian thực thi: 0.233 giây
+
+=> KẾT LUẬN HIỆU NĂNG:
+   Kỹ thuật Partition Pruning kết hợp Parquet giúp tăng tốc độ truy vấn gấp 7.75 LẦN!
+========================================================================================

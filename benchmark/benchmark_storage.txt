@@ -1,0 +1,24 @@
+========================================================================================
+                      BÁO CÁO BENCHMARK LƯU TRỮ (BRONZE VS SILVER)
+========================================================================================
+- Dataset: Alibaba Cainiao LaDe (Last-Mile Delivery)
+- Tổng số bản ghi thực tế: 10,650,808 rows (Delivery: 4,514,661 | Pickup: 6,136,147)
+- Thời gian thực thi Spark ETL: 48.35 giây
+- Công nghệ nén: Columnar Parquet + Snappy Compression
+- Chiến lược phân vùng: PartitionBy('city') [Chongqing, Hangzhou, Jilin, Shanghai, Yantai]
+
+----------------------------------------------------------------------------------------
+BẢNG SO SÁNH DUNG LƯỢNG CHIẾM DỤNG TRÊN HDFS:
+----------------------------------------------------------------------------------------
+Thành phần dữ liệu        Bronze Layer (CSV thô)     Silver Layer (Parquet nén)    Tỷ lệ tiết kiệm
+----------------------------------------------------------------------------------------
+1. Delivery (Xuất hàng)           664.0 MB                   217.0 MB                  67.32%
+2. Pickup (Nhập hàng)             942.9 MB                   304.4 MB                  67.72%
+----------------------------------------------------------------------------------------
+TỔNG CỘNG:                      1,606.9 MB (1.57 GB)         521.4 MB (0.51 GB)        67.55%
+----------------------------------------------------------------------------------------
+=> KẾT LUẬN THỰC NGHIỆM:
+Định dạng cột Parquet kết hợp thuật toán nén Snappy giúp hệ thống tiết kiệm được 67.55% 
+dung lượng đĩa cứng trên HDFS, đồng thời kích hoạt thành công Partition Pruning phục vụ 
+tăng tốc truy vấn tại Giai đoạn 3.
+========================================================================================

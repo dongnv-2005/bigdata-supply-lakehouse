@@ -1,0 +1,35 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Data & Datasets (Do not upload GBs of raw data to Git)
+*.csv
+*.tsv
+*.parquet
+*.tar.gz
+*.tgz
+*.zip
+datasets/
+data/
+
+# Environments & Packages
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Logs & Runtime
+*.log
+streamlit.log
+
+# Operating System & IDE files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~

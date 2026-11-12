@@ -1,0 +1,21 @@
+========================================================================================
+                      BÁO CÁO BENCHMARK TẦNG PHỤC VỤ (SERVING LAYER)
+========================================================================================
+- Cơ sở dữ liệu: Apache HBase 2.6.7 (NoSQL Wide-Column Store)
+- Cổng kết nối: HBase Thrift Server (Port 9090)
+- Bảng tra cứu: 'order_tracking' (Column Family: 'cf')
+- Phương thức truy vấn: Point-Lookup theo RowKey (O(1) Hash/Index lookup)
+
+KẾT QUẢ ĐO ĐẠC ĐỘ TRỄ (POINT-LOOKUP LATENCY):
+- Truy vấn mã đơn hàng: order_3158819
+- Dữ liệu trích xuất tức thì:
+  + Thành phố (city): Shanghai
+  + Thời gian giao thực tế (duration_min): 398.0 phút
+  + Dự báo rủi ro trễ hạn (late_risk): 1 (Trễ hạn)
+- ĐỘ TRỄ PHẢN HỒI THỰC TẾ: 4.87 mili-giây (ms) (< 10ms)
+
+=> KẾT LUẬN NGHIỆP VỤ & KIẾN TRÚC:
+Thay vì phải khởi động một Spark Job nặng nề (mất từ 15-30 giây) để quét tìm 1 đơn hàng,
+Tầng Serving HBase cho phép hệ thống phía người dùng (App Shipper, Web Dashboard) 
+tra cứu trạng thái và rủi ro đơn hàng trong chưa đầy 5 mili-giây!
+========================================================================================

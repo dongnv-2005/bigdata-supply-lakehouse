@@ -1,0 +1,12 @@
+
+========================================================================================
+                      BAO CAO KET QUA HUAN LUYEN SPARK MLLIB
+========================================================================================
+- Thuat toan: Logistic Regression (Distributed Binary Classifier)
+- So luong ban ghi kiem thu: 902,086 don hang
+- Thoi gian huan luyen: 12.9 giay
+
+KET QUA DANH GIA DO CHINH XAC:
+1. Chi so ROC-AUC (Area Under ROC Curve): 0.6695 (Thang diem 1.0)
+2. Do chinh xac tong the (Accuracy):    72.6%
+========================================================================================
